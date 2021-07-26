@@ -3,7 +3,8 @@
 现在只需要给定一组Key-Value就可以高效完成表单,对于不同设计稿这并不是很完善,在使用中可能需要做一些小小的修改.
 ## UI
 
-![Screenshot_20210726-233916](https://user-images.githubusercontent.com/10151414/127029681-754e24a8-5344-4226-b84f-cc663588fa93.png)
+ <img src="https://user-images.githubusercontent.com/10151414/127034208-5aedca27-77cf-4b58-bcb2-e52d18409cc2.png" alt="hello" style="zoom:67%;"/>
+
 ## 快速开始
 像普通的View控件一样使用
 ### 1.  layout
