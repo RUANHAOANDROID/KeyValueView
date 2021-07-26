@@ -15,7 +15,7 @@
     android:layout_height="wrap_content"
     android:padding="8dp" />
 ```
-### 1.  java or kotlin
+### 1.  kotlin or java  
 ##### kotlin
 ```kotlin
         val keyValueView = findViewById<KeyValueView>(R.id.keyValueView)
