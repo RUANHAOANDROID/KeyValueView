@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
             KeyValue("姓名：", "张三", "年龄：", "22"),
             KeyValue("身份证号码：", "115415612484215984"),
             KeyValue("家庭住址：", "黄头高坡坡北石头凹村"),
-            KeyValue("婚姻状况：", "已婚", "配偶:", "李小凤"),
+            KeyValue("婚姻状况：", "已婚", "配偶：", "李小凤"),
             KeyValue("联系电话：", "18898866988"),
         )
         keyValueView.itemStyle.apply {

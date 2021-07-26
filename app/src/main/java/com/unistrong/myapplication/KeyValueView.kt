@@ -94,8 +94,7 @@ data class KeyStyle(
     var paddingRight: Float = 0f,
     var paddingTop: Float = 8f,
     var paddingBottom: Float = 0f
-) {
-}
+)
 
 data class ItemStyle(
     var height: Float = 30f,
@@ -109,7 +108,7 @@ data class ItemStyle(
 data class ValueStyle(
     var textColor: Int = android.R.color.darker_gray,
     var textSize: Float = 16f,
-    var paddingLeft: Float = 0f,
+    var paddingLeft: Float = 2f,
     var paddingRight: Float = 0f,
     var paddingTop: Float = 8f,
     var paddingBottom: Float = 0f
