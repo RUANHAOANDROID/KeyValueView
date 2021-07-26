@@ -1,7 +1,7 @@
 # KeyValueView
 在某些领域键值对的表单特别多,不停的复制粘贴让人难以忍受.
 现在只需要给定一组Key-Value就可以高效完成表单,对于不同设计稿这并不是很完善,在使用中可能需要做一些小小的修改.
-## UI
+## 预览
 
  <img src="https://user-images.githubusercontent.com/10151414/127034208-5aedca27-77cf-4b58-bcb2-e52d18409cc2.png" alt="hello" style="zoom:67%;"/>
 
