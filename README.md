@@ -3,7 +3,15 @@
 现在只需要给定一组Key-Value就可以高效完成表单,对于不同设计稿这并不是很完善,在使用中可能需要做一些小小的修改.
 ## 预览
 
- <img src="https://user-images.githubusercontent.com/10151414/127034208-5aedca27-77cf-4b58-bcb2-e52d18409cc2.png" alt="hello" style="zoom:67%;"/>
+<table>
+    <tr>
+      <td>
+          <img src="https://user-images.githubusercontent.com/10151414/127034208-5aedca27-77cf-4b58-bcb2-e52d18409cc2.png" alt="hello" style="zoom:67%;"/>             </td>
+      <td>
+          <img src="https://user-images.githubusercontent.com/10151414/127116874-6e58a25d-77a4-40b5-9915-f18740b0bc2b.png" alt="hello" style="zoom:67%;"/>
+      </td>
+    </tr>
+</table>
 
 ## 快速开始
 像普通的View控件一样使用
