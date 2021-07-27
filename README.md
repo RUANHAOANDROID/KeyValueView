@@ -1,9 +1,22 @@
 # KeyValueView
 在某些领域键值对的表单特别多,不停的复制粘贴让人难以忍受.
 现在只需要给定一组Key-Value就可以高效完成表单,对于不同设计稿这并不是很完善,在使用中可能需要做一些小小的修改.
-## UI
+## 预览
 
- <img src="https://user-images.githubusercontent.com/10151414/127034208-5aedca27-77cf-4b58-bcb2-e52d18409cc2.png" alt="hello" style="zoom:67%;"/>
+<table>
+       <tr>
+            <td align="center">单独使用</td>
+            <td align="center">列表中使用</td>
+        </tr>
+    <tr>
+      <td>
+          <img src="https://user-images.githubusercontent.com/10151414/127117139-fdde2cd8-6e26-4cc7-be07-c8dfa2c0c47d.png" alt="hello" style="zoom:67%;"/>            
+        </td>
+        <td>
+          <img src="https://user-images.githubusercontent.com/10151414/127116874-6e58a25d-77a4-40b5-9915-f18740b0bc2b.png" alt="hello" style="zoom:67%;"/>
+      </td>
+    </tr>
+</table>
 
 ## 快速开始
 像普通的View控件一样使用
@@ -15,7 +28,7 @@
     android:layout_height="wrap_content"
     android:padding="8dp" />
 ```
-### 1.  kotlin or java  
+### 2.  kotlin or java  
 ##### kotlin
 ```kotlin
         val keyValueView = findViewById<KeyValueView>(R.id.keyValueView)
