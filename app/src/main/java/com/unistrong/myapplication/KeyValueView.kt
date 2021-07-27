@@ -18,19 +18,26 @@ class KeyValueView @JvmOverloads constructor(
     var keyStyle = KeyStyle()
     var valueStyle = ValueStyle()
     var itemStyle = ItemStyle()
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val layoutHeight =
+            dip2px(data.size * (itemStyle.height + itemStyle.paddingTop + itemStyle.paddingBottom + keyStyle.paddingTop + keyStyle.paddingBottom) + paddingTop + paddingBottom).toInt();
+        setMeasuredDimension(widthMeasureSpec, layoutHeight)
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        val itemHeight = dip2px(itemStyle.height.toFloat())
+        val itemHeight = dip2px(itemStyle.height)
         var key1StartX = paddingLeft + dip2px(keyStyle.paddingLeft)
-        var key1StartY = paddingTop + dip2px(keyStyle.paddingTop)
+        var key1StartY = dip2px(keyStyle.paddingTop + paddingTop + itemStyle.paddingTop)
         var key2StartX = width * itemStyle.percentage + dip2px(itemStyle.paddingLeft)
 
         data.forEachIndexed { index, text ->
             key1StartY += itemHeight + dip2px(keyStyle.paddingTop)
             if (index == 0)
-                key1StartY = (dip2px(paddingTop.toFloat())
-                        + dip2px(itemStyle.paddingTop)
-                        + dip2px(keyStyle.paddingTop))
+                key1StartY =
+                    dip2px(keyStyle.paddingTop + paddingTop + itemStyle.paddingTop) + itemHeight / 2
+
             textPaint.apply {
                 textSize = dip2px(keyStyle.textSize)
                 color = ContextCompat.getColor(context, keyStyle.textColor)
@@ -88,7 +95,7 @@ class KeyValueView @JvmOverloads constructor(
 }
 
 data class KeyStyle(
-    var textColor: Int = R.color.black,
+    var textColor: Int = android.R.color.black,
     var textSize: Float = 16f,
     var paddingLeft: Float = 0f,
     var paddingRight: Float = 0f,
