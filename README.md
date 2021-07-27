@@ -4,6 +4,10 @@
 ## 预览
 
 <table>
+       <tr>
+            <td align="center">单独使用</td>
+            <td align="center">列表中使用</td>
+        </tr>
     <tr>
       <td>
           <img src="https://user-images.githubusercontent.com/10151414/127117139-fdde2cd8-6e26-4cc7-be07-c8dfa2c0c47d.png" alt="hello" style="zoom:67%;"/>            
