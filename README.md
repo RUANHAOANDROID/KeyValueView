@@ -19,8 +19,20 @@
 </table>
 
 ## 快速开始
-像普通的View控件一样使用
-### 1.  layout
+### 1. include
+```gradle
+    allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+    }
+
+	dependencies {
+	        implementation 'com.github.RUANHAOANDROID:KeyValueView:1.0.0'
+	}
+```
+### 2. layout
 ```xml
 <com.unistrong.myapplication.KeyValueView
     android:id="@+id/keyValueView"
@@ -28,7 +40,7 @@
     android:layout_height="wrap_content"
     android:padding="8dp" />
 ```
-### 2.  kotlin or java  
+### 3. kotlin or java  
 ##### kotlin
 ```kotlin
         val keyValueView = findViewById<KeyValueView>(R.id.keyValueView)
