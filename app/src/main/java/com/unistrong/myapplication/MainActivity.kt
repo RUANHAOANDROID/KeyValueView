@@ -2,6 +2,8 @@ package com.unistrong.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.keyvalue.view.KeyValue
+import com.keyvalue.view.KeyValueView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
