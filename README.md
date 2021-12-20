@@ -21,16 +21,16 @@
 ## 快速开始
 ### 1. include
 ```gradle
-    allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-    }
 
-	dependencies {
-	        implementation 'com.github.RUANHAOANDROID:KeyValueView:1.0.0'
+    allprojects {
+	repositories {
+		maven { url 'https://jitpack.io' }
 	}
+    }
+	
+    dependencies {
+    	implementation 'com.github.RUANHAOANDROID:KeyValueView:1.0.0'
+    }
 ```
 ### 2. layout
 ```xml
