@@ -23,9 +23,12 @@ class KeyValueView @JvmOverloads constructor(
     var itemStyle = ItemStyle()
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val lineHeight =
+            itemStyle.height + itemStyle.paddingTop + itemStyle.paddingBottom + keyStyle.paddingTop + keyStyle.paddingBottom
+        var spanLineCount = 0
+        data.forEach { spanLineCount += it.value1Style.spanLines }
         val layoutHeight =
-            dip2px(data.size * (itemStyle.height + itemStyle.paddingTop + itemStyle.paddingBottom + keyStyle.paddingTop + keyStyle.paddingBottom) + paddingTop + paddingBottom)
-                .toInt();
+            dip2px((data.size + spanLineCount) * lineHeight + paddingTop + paddingBottom).toInt();
         setMeasuredDimension(widthMeasureSpec, layoutHeight)
     }
 
@@ -33,41 +36,75 @@ class KeyValueView @JvmOverloads constructor(
         super.onDraw(canvas)
         val itemHeight = dip2px(itemStyle.height)
         var key1StartX = paddingLeft + dip2px(keyStyle.paddingLeft)
-        var key1StartY =
-            dip2px(keyStyle.paddingTop + paddingTop + itemStyle.paddingTop)
+        var key1StartY = dip2px(keyStyle.paddingTop + paddingTop + itemStyle.paddingTop)
         var key2StartX = width * itemStyle.percentage + dip2px(itemStyle.paddingLeft)
-
+        var extraLineHeight = 0f //额外行高，有时候占两行
         data.forEachIndexed { index, text ->
-            key1StartY += itemHeight + dip2px(keyStyle.paddingTop)
+            key1StartY += itemHeight + dip2px(keyStyle.paddingTop) + extraLineHeight
             if (index == 0)
                 key1StartY =
                     dip2px(keyStyle.paddingTop + paddingTop + itemStyle.paddingTop) + itemHeight / 2
 
             textPaint.apply {
-                textSize = dip2px(keyStyle.textSize)
-                color = ContextCompat.getColor(context, keyStyle.textColor)
+                textSize = dip2px(text.key1Style.textSize)
+                color = ContextCompat.getColor(context, text.key1Style.textColor)
             }
+            //key1
             canvas.drawText(
                 text.key1,
                 key1StartX,
                 key1StartY,
                 textPaint
             )
+
             val key1Width = textPaint.measureText(text.key1)
             textPaint.apply {
-                textSize = dip2px(valueStyle.textSize)
-                color = ContextCompat.getColor(context, valueStyle.textColor)
+                textSize = dip2px(text.value1Style.textSize)
+                color = ContextCompat.getColor(context, text.value1Style.textColor)
             }
-            canvas.drawText(
-                text.value1,
-                key1StartX + key1Width + dip2px(valueStyle.paddingLeft),
-                key1StartY,
-                textPaint
-            )
+            /**
+             *value1
+             *value1支持跨行显示,但不能有key2和value2
+             *示例 KeyValue("key1：", "value1", value1Style = ValueStyle(spanLines = 1))
+             */
+
+            val value1RemainingWidth =
+                canvas.width - (key1StartX + key1Width + dip2px(text.value1Style.paddingLeft))//value1剩余空间
+            val singleTextWidth = textPaint.measureText(text.value1.first().toString())//单个字宽度
+            val textLineWidth = textPaint.measureText(text.value1)//字行宽
+            val isExtraLine = textLineWidth > value1RemainingWidth
+            if (isExtraLine) {
+                extraLineHeight += itemHeight
+                val nextLineIndex = (value1RemainingWidth / singleTextWidth).toInt()//换行位置
+                val str1 = text.value1.substring(0, nextLineIndex)
+                val str2 = text.value1.substring(nextLineIndex + 1, text.value1.length)
+
+                canvas.drawText(
+                    str1,
+                    key1StartX + key1Width + dip2px(text.value1Style.paddingLeft),
+                    key1StartY,
+                    textPaint
+                )
+                canvas.drawText(
+                    str2,
+                    key1StartX + dip2px(text.value1Style.paddingLeft),
+                    key1StartY + itemHeight,
+                    textPaint
+                )
+            } else {
+                canvas.drawText(
+                    text.value1,
+                    key1StartX + key1Width + dip2px(text.value1Style.paddingLeft),
+                    key1StartY,
+                    textPaint
+                )
+            }
+
+            //key2
             text.key2?.let { key ->
                 textPaint.apply {
-                    textSize = dip2px(keyStyle.textSize)
-                    color = ContextCompat.getColor(context, keyStyle.textColor)
+                    textSize = dip2px(text.key2Style.textSize)
+                    color = ContextCompat.getColor(context, text.key2Style.textColor)
                 }
                 canvas.drawText(
                     key,
@@ -76,13 +113,14 @@ class KeyValueView @JvmOverloads constructor(
                     textPaint
                 )
                 val key2Width = textPaint.measureText(key)
+                //value2
                 text.value2?.let {
                     textPaint.apply {
-                        textSize = dip2px(valueStyle.textSize)
-                        color = ContextCompat.getColor(context, valueStyle.textColor)
+                        textSize = dip2px(text.value2Style.textSize)
+                        color = ContextCompat.getColor(context, text.value2Style.textColor)
                     }
                     val value2X =
-                        key2StartX + key2Width + dip2px(valueStyle.paddingLeft)
+                        key2StartX + key2Width + dip2px(text.value2Style.paddingLeft)
                     val value2Y = key1StartY
                     canvas.drawText(
                         it,

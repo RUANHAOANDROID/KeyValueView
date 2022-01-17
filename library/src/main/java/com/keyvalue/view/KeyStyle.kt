@@ -1,7 +1,7 @@
 package com.keyvalue.view
 
 /**
- * Item中 key样式
+ * Item或单试图中key样式
  */
 data class KeyStyle(
     var textColor: Int = android.R.color.black,

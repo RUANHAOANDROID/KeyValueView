@@ -1,8 +1,9 @@
 package com.keyvalue.view
 
 /**
- * 整体样式
+ * Item或单个试图整体样式
  */
+
 data class ItemStyle(
     var height: Float = 20f,
     var paddingLeft: Float = 0f,
