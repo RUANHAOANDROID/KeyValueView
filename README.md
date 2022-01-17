@@ -13,6 +13,7 @@
        <tr>
             <td align="center">单独使用</td>
             <td align="center">列表中使用</td>
+	    <td align="center">跨行显示</td>
         </tr>
     <tr>
       <td>
@@ -20,6 +21,9 @@
         </td>
         <td>
           <img src="https://user-images.githubusercontent.com/10151414/127116874-6e58a25d-77a4-40b5-9915-f18740b0bc2b.png" alt="hello" style="zoom:67%;"/>
+      </td>
+	     <td>
+          <img src="https://user-images.githubusercontent.com/10151414/149767487-f260d246-3198-493c-8d3a-b7d93af0f1fa.jpg" alt="hello" style="zoom:67%;"/>
       </td>
     </tr>
 </table>
