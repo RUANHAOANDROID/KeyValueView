@@ -1,8 +1,14 @@
 # KeyValueView [![](https://jitpack.io/v/RUANHAOANDROID/KeyValueView.svg)](https://jitpack.io/#RUANHAOANDROID/KeyValueView)
 在某些领域键值对的表单特别多,不停的复制粘贴让人难以忍受.
 现在只需要给定一组Key-Value就可以高效完成表单,对于不同设计稿这并不是很完善,在使用中可能需要做一些小小的修改.
-## 预览
+## 功能
+- 行键值对显示
+- 双键值对宽按百分比显示
+- 键值对Value跨行显示（最多支持2行,行中不可以再设置第二个键值对）
+- 单试图使用
+- 列表中使用
 
+## 预览
 <table>
        <tr>
             <td align="center">单独使用</td>
