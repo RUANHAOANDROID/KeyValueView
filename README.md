@@ -39,7 +39,7 @@
     }
 	
     dependencies {
-    	implementation 'com.github.RUANHAOANDROID:KeyValueView:1.0.0'
+    	implementation 'com.github.RUANHAOANDROID:KeyValueView:1.0.2'
     }
 ```
 ### 2. layout
