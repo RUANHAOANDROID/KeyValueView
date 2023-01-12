@@ -54,6 +54,7 @@
 ##### kotlin
 ```kotlin
         val keyValueView = findViewById<KeyValueView>(R.id.keyValueView)
+	//设置数据
         keyValueView.data = mutableListOf(
             KeyValue("姓名：", "张三", "年龄：", "22"),
             KeyValue("身份证号码：", "115415612484215984"),
@@ -61,6 +62,7 @@
             KeyValue("婚姻状况：", "已婚", "配偶：", "李小凤"),
             KeyValue("联系电话：", "18898866988"),
         )
+	//可选的样式设置
         keyValueView.itemStyle.apply {
             height = 30f
             percentage = 0.6f
