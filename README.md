@@ -44,7 +44,7 @@
 ```
 ### 2. layout
 ```xml
-<com.unistrong.myapplication.KeyValueView
+<com.keyvalue.view.KeyValueView
     android:id="@+id/keyValueView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
