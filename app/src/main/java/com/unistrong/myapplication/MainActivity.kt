@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         keyValueView.keyStyle.apply {
             textColor = android.R.color.holo_red_dark
             textSize = 16f
+            minWidth= 100f
         }
         keyValueView.valueStyle.apply {
             textColor = android.R.color.holo_blue_dark

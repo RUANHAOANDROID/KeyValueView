@@ -37,19 +37,22 @@ class KeyValueView @JvmOverloads constructor(
         val itemHeight = dip2px(itemStyle.height)
         var key1StartX = paddingLeft + dip2px(keyStyle.paddingLeft)
         var key1StartY = dip2px(keyStyle.paddingTop + paddingTop + itemStyle.paddingTop)
+
         var key2StartX = width * itemStyle.percentage + dip2px(itemStyle.paddingLeft)
+
         var extraLineHeight = 0f //额外行高，有时候占两行
+
         data.forEachIndexed { index, text ->
             key1StartY += itemHeight + dip2px(keyStyle.paddingTop) + extraLineHeight
             if (index == 0)
                 key1StartY =
                     dip2px(keyStyle.paddingTop + paddingTop + itemStyle.paddingTop) + itemHeight / 2
-
+            //初始化画笔
             textPaint.apply {
                 textSize = dip2px(text.key1Style.textSize)
                 color = ContextCompat.getColor(context, text.key1Style.textColor)
             }
-            //key1
+            //draw key1
             canvas.drawText(
                 text.key1,
                 key1StartX,
@@ -57,7 +60,8 @@ class KeyValueView @JvmOverloads constructor(
                 textPaint
             )
 
-            val key1Width = textPaint.measureText(text.key1)
+            var key1Width = textPaint.measureText(text.key1)
+            key1Width= maxOf(key1Width,keyStyle.minWidth)
             textPaint.apply {
                 textSize = dip2px(text.value1Style.textSize)
                 color = ContextCompat.getColor(context, text.value1Style.textColor)
@@ -73,7 +77,7 @@ class KeyValueView @JvmOverloads constructor(
             val singleTextWidth = textPaint.measureText(text.value1.first().toString())//单个字宽度
             val textLineWidth = textPaint.measureText(text.value1)//字行宽
             val isExtraLine = textLineWidth > value1RemainingWidth
-            if (isExtraLine) {
+            if (isExtraLine) {//需要换行
                 extraLineHeight += itemHeight
                 val nextLineIndex = (value1RemainingWidth / singleTextWidth).toInt()//换行位置
                 val str1 = text.value1.substring(0, nextLineIndex)
@@ -112,7 +116,8 @@ class KeyValueView @JvmOverloads constructor(
                     key1StartY,
                     textPaint
                 )
-                val key2Width = textPaint.measureText(key)
+                var key2Width = textPaint.measureText(key)
+                key2Width= maxOf(key2Width,keyStyle.minWidth)
                 //value2
                 text.value2?.let {
                     textPaint.apply {

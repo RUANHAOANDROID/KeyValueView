@@ -9,5 +9,6 @@ data class KeyStyle(
     var paddingLeft: Float = 0f,
     var paddingRight: Float = 0f,
     var paddingTop: Float = 8f,
-    var paddingBottom: Float = 0f
+    var paddingBottom: Float = 0f,
+    var minWidth: Float = 0f
 )
