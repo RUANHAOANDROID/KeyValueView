@@ -52,7 +52,7 @@
 ```
 ### 3. kotlin or java  
 ##### kotlin
-```kotlin
+``` kotlin
         val keyValueView = findViewById<KeyValueView>(R.id.keyValueView)
 	//设置数据
         keyValueView.data = mutableListOf(
@@ -78,7 +78,7 @@
         keyValueView.invalidate()
 ```
 ##### java
-```java
+``` java
         KeyValueView keyValueView = findViewById(R.id.keyValueView);
         List<KeyValue> data = new ArrayList<>();
         data.add(new KeyValue("姓名：", "张三", "年龄：", "22"));
