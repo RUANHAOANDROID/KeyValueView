@@ -14,8 +14,16 @@ class KeyValueView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
     var data = mutableListOf<KeyValue>(
-        KeyValue("key1", "value1"),
-        KeyValue("key1", "value1", "key2", "value2")
+        kevValue {
+            key1 = "key1"
+            value1 = "Value1"
+        },
+        kevValue {
+            key1 = "key1"
+            value1 = "Value1"
+            key2 = "key2"
+            value2 = "Value2"
+        },
     )
     private var textPaint: TextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
     var keyStyle = KeyStyle()
@@ -61,7 +69,7 @@ class KeyValueView @JvmOverloads constructor(
             )
 
             var key1Width = textPaint.measureText(text.key1)
-            key1Width= maxOf(key1Width,keyStyle.minWidth)
+            key1Width = maxOf(key1Width, keyStyle.minWidth)
             textPaint.apply {
                 textSize = dip2px(text.value1Style.textSize)
                 color = ContextCompat.getColor(context, text.value1Style.textColor)
@@ -117,7 +125,7 @@ class KeyValueView @JvmOverloads constructor(
                     textPaint
                 )
                 var key2Width = textPaint.measureText(key)
-                key2Width= maxOf(key2Width,keyStyle.minWidth)
+                key2Width = maxOf(key2Width, keyStyle.minWidth)
                 //value2
                 text.value2?.let {
                     textPaint.apply {
